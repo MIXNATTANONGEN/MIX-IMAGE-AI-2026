@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIX-IMAGE | Neumorphic AI Photo Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* ปรับโทนสีพื้นหลังให้สว่างขึ้นเล็กน้อยเพื่อเพิ่มคอนทราสต์ของเงา */
+      --bg-color: #e6e9ef; 
+      --shadow-light: #ffffff;
+      --shadow-dark: #b8bec9;
+      --accent-pink: #ff0080;
+      --accent-blue: #4f46e5;
+    }
+
+    html, body, #root { height: 100%; overflow: hidden; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: #4a5568;
+      position: relative;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; }
+
+    /* ปรับแต่งความนูน (Raised) ให้ดูเนียนและเด่นชัดขึ้น */
+    .nm-raised {
+      background: var(--bg-color);
+      box-shadow: 10px 10px 20px var(--shadow-dark), 
+                  -10px -10px 20px var(--shadow-light);
+      border: none;
+    }
+
+    /* ปรับแต่งความลึก (Inset) ให้ดูนุ่มนวล */
+    .nm-inset {
+      background: var(--bg-color);
+      box-shadow: inset 5px 5px 10px var(--shadow-dark), 
+                  inset -5px -5px 10px var(--shadow-light);
+      border: none;
+    }
+
+    .nm-button {
+      background: var(--bg-color);
+      box-shadow: 6px 6px 12px var(--shadow-dark), 
+                  -6px -6px 12px var(--shadow-light);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: none;
+    }
+
+    .nm-button:active, .nm-button.active {
+      box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                  inset -4px -4px 8px var(--shadow-light);
+      transform: scale(0.96);
+    }
+
+    .beatpad-btn {
+      background: var(--bg-color);
+      box-shadow: 4px 4px 8px var(--shadow-dark), 
+                  -4px -4px 8px var(--shadow-light);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      color: #718096;
+      font-weight: 600;
+    }
+
+    .beatpad-btn.active {
+      box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                  inset -4px -4px 8px var(--shadow-light);
+      color: var(--accent-blue);
+    }
+
+    textarea, input {
+      background: var(--bg-color) !important;
+      box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                  inset -4px -4px 8px var(--shadow-light) !important;
+      border: none !important;
+      color: #2d3748 !important;
+    }
+
+    .uploader-container {
+      background: var(--bg-color);
+      box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                  inset -4px -4px 8px var(--shadow-light);
+      border: 1px dashed rgba(163, 177, 198, 0.4);
+      border-radius: 16px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--shadow-dark); border-radius: 10px; }
+    
+    .main-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0.75rem;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Animation for smooth state changes */
+    .fade-in { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "react/": "https://aistudiocdn.com/react@^19.1.1/",
+      "react": "https://aistudiocdn.com/react@^19.1.1",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+      "@google/genai": "https://aistudiocdn.com/@google/genai"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
